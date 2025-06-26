@@ -1,45 +1,55 @@
 # UNIT-PROJECT-1
 
+## Based on what you’ve learned until now, create a project of your choosing (impress us with your imagination). This project must at least satisfy the following minimum requirements:
 
+- Must be interactive on CLI  
+- Use your coding skills in Python accurately  
+- Organize your code into modules & (or packages)  
+- Use git & GitHub to track changes in your code  
 
-## Based on what you’ve learned until now , create a project of your choosing (impress us with your imagination) . This project must at least satisfy the following minimum requirements :
+---
 
-- Must be interactive on CLI.
-- Use your coding skills in Python accurately.
-- Organize Your Code into modules & (or packages)
-- Use git & Github to track changes in your code.
+## Project: **EduMate – Your CLI Teaching Assistant**
 
-## Example Project :  An online Grocery Store :
+### 🧑‍🏫 Overview
 
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+**EduMate** is a command-line tool to help teachers manage their classes, prepare lessons, run interactive sessions, and track student performance — all from the terminal.
 
-### Features & User Stories
-#### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
+---
 
+### 💡 Features & User Stories
 
+- Log in and manage multiple classes  
+- Auto-generate structured lesson plans with objectives, key questions, and summaries  
+- Group students randomly and fairly  
+- Start a lesson timer with review questions  
+- Track performance stats for students and lessons  
+- Create and review quick quizzes
 
-#### Usage :
- Explain to the user how to use your project . 
- for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
- - and so on...
+---
 
+### 🖥️ Usage
 
-### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
+From the terminal:
 
-### NOTE: before submitting the final project, please do the following command:
-`pip freeze > requirements.txt` to enable use to know & use the packages used in your project.
+```bash
+python main.py
+```
+
+Sample commands:
+
+- `login` – Access your teacher account  
+- `select_class` – Choose or create a class  
+- `prepare_lesson` – Auto-generate lesson content  
+- `start_timer` – Begin lesson timer with quizzes  
+- `group_students` – Divide class into fair teams  
+- `view_stats` – View progress and performance  
+- `exit` – Save and quit  
+
+---
+
+### NOTE:  
+Before submitting the final project, please run:  
+```bash
+pip freeze > requirements.txt
+```
