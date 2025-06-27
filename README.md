@@ -44,7 +44,7 @@ Sample commands:
 - `start_timer` – Begin lesson timer with quizzes  
 - `group_students` – Divide class into fair teams  
 - `view_stats` – View progress and performance  
-- `exit` – Save and quit  
+- `exit` – Save and quit
 
 ---
 
