@@ -16,6 +16,10 @@ Are you a:
 2. Student
 """
 
+teacher_menu = """
+1. Disply Students
+2. Devid class to groubs
+"""
 
 
 user_login_choise = int(input(login_menu))
@@ -36,15 +40,18 @@ match user_login_choise:
                 id_number = input('Enter id number: ')
                 password = input('Enter password: ')
                 if teacher.Teacher.log_in(id_number, password):
-                    print('GOOOOOOOOOOOD Teacher')
-
+                    teacher_chose = int(input(teacher_menu))
+                    match teacher_chose:
+                        case 1:
+                            student.Student.display_students()
+                        case 2:
+                            groups_number = int(input('Enter groups number: '))
+                            student.Student.devide_students_groubs(groups_number)
+                    
             case 2:
                 id_number = input('Enter id number: ')
                 password = input('Enter password: ')
                 if student.Student.log_in(id_number, password):
                     print('GOOOOOOOOOOOD Student')
     case _:
-        print('invalid input')
-        
-
-        
+        print('invalid input')        

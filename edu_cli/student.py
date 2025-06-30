@@ -1,6 +1,10 @@
 import person 
 import json
 import os
+import pandas as pd
+import random
+import numpy as np
+
 
 class Student(person.Person):
     def __init__(self, name, id_number, city, password, level):
@@ -32,7 +36,7 @@ class Student(person.Person):
             name = input('Enter your name: ')
             id_number = input('Enter your id number: ')
             city = input('Enter your city: ')
-            password = input('Enter your passowerd')
+            password = input('Enter your passowerd: ')
             level = input ('Enter your level: ')
             student = Student(name, id_number, city, password, level)
             all_students.append(student.__dict__)
@@ -58,3 +62,36 @@ class Student(person.Person):
         except Exception as e:
             print(e)
         return False
+
+
+
+    def display_students():
+
+        try:
+            with open('data/students.json', 'r', encoding='UTF-8') as file:
+                students = json.load(file)
+                students = [student['name'] for student in students]
+                s = pd.Series(students)
+                print(s)
+        except FileNotFoundError:
+            print('No students in file')
+
+
+    def devide_students_groubs(group_number:int):
+        try:
+            with open('data/students.json', 'r', encoding='UTF-8') as file:
+                students = json.load(file)
+                students = [student['name'] for student in students]
+ 
+                groups = []
+                random.shuffle(students)
+                for i in range(len(students)):
+                    if i % group_number == 0:
+                        groups.append(students[i: i+ group_number])
+        except FileNotFoundError:
+            print('No file with students.json name')
+        else:
+            for i, group in enumerate(groups):
+                print(f"Group {i}: {group}")
+
+Student.devide_students_groubs(2)

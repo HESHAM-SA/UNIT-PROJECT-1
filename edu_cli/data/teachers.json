@@ -5,5 +5,12 @@
     "id_number": "333",
     "password": "hhh",
     "major": "math"
+  },
+  {
+    "name": "Ali",
+    "city": "Riyadh",
+    "id_number": "555",
+    "password": "pass",
+    "major": "math"
   }
 ]
