@@ -73,30 +73,45 @@ class Teacher(person.Person):
                 json.dump(qustions)
                 print(e + 'but now we create empty list []')
 
+        random_or_last_qustions = int(input('What you want to chose random or last qustions? :\n 1.select random qustions.\n 2.select last qustoins.'))
         qize_qustions = []
-        # to shuffle qustions then extract qustion only ( without answer )
-        random.shuffle(qustions)
-        for i in range(number_qustions):
-            q = qustions[i]
-            values = list(q.values())
-            qustoin = list(values[0].keys())
-            answer = list(values[0].values())
-            qustion_number = {qustoin[0]:answer[0]}
-            qize_qustions.append(qustion_number)
-            answer = '✔️' if answer[0] else '❌'
-            print(f"Q{1}. {qustoin[0]}, {answer}")
+        match random_or_last_qustions:
+            case 1:
+                # to shuffle qustions then extract qustion only ( without answer )
+                random.shuffle(qustions)
+                for i in range(number_qustions):
+                    q = qustions[i]
+                    values = list(q.values())
+                    qustoin = list(values[0].keys())
+                    answer = list(values[0].values())
+                    qustion_number = {qustoin[0]:answer[0]}
+                    qize_qustions.append(qustion_number)
+                    answer = '✔️' if answer[0] else '❌'
+                    print(f"Q{1}. {qustoin[0]}, {answer}")
+            case 2:
+                with open(file_path, 'r', encoding='UTF-8') as file:
+                    qustions = json.load(file)
+                for i in qustions.tail(number_qustions):
+                    q = qustions[i]
+                    values = list(q.values())
+                    qustoin = list(values[0].keys())
+                    answer = list(values[0].values())
+                    qustion_number = {qustoin[0]:answer[0]}
+                    qize_qustions.append(qustion_number)
+                    answer = '✔️' if answer[0] else '❌'
+                    print(f"Q{1}. {qustoin[0]}, {answer}")
 
-        user_input = input('Do you want to subment this quations to stuednts? (y/n): ')
+        user_input = int(input('Do you want to subment this quations to stuednts? (y/n): '))
         match user_input:
-            case 'y':
-                try:
+            case 1:
+                try:    
                     quize_path = 'data/quize.json'
                     os.makedirs(os.path.dirname(quize_path), exist_ok=True)
                     with open(quize_path, 'w', encoding='UTF-8') as file:
                         json.dump(qize_qustions, file, indent=2)
                 except FileNotFoundError as e:
                     print(e)
-            case 'n':
+            case 2:
                 print('Bye')
             case _:
                 print('invalid input')

@@ -8,13 +8,9 @@ import numpy as np
 
 
 class Student(person.Person):
-    def __init__(self, name, id_number, city, password, score):
+    def __init__(self, name, id_number, city, password, exams):
         super().__init__(name, id_number, city, password)
-        self.set_score(score)
-
-    def set_score(self, score):
-        self.__score = score
-        return self.__score
+        self.exams = exams
         
     @staticmethod
     def register_new_user(): 
@@ -33,8 +29,8 @@ class Student(person.Person):
             id_number = input('Enter your id number: ')
             city = input('Enter your city: ')
             password = input('Enter your passowerd: ')
-            level = input ('Enter your level: ')
-            student = Student(name, id_number, city, password, level)
+            exams = [{'score':0, 'state':False}]
+            student = Student(name, id_number, city, password, exams)
             all_students.append(student.__dict__)
             with open(file_path, 'w', encoding='UTF-8') as file:
                 json.dump(all_students, file, indent=2)
@@ -58,8 +54,6 @@ class Student(person.Person):
         except Exception as e:
             print(e)
         return False
-
-
 
     def display_students():
         try:
@@ -90,7 +84,29 @@ class Student(person.Person):
                 print(f"Group {i}: {group}")
 
 
-    def subment_quiz():
+    def subment_quiz(self, id_number):
+            
+        with open('data/students.json', 'r', encoding='UTF-8') as file:
+            all_students = json.load(file)
+
+        student_index = 0
+        for i in all_students:
+            for key, value in i.items():
+                if value == id_number:
+                    student_index = i
+                    break
+        user_exam_or_score = int(input('do you want to take exam or show score? '))
+        match user_exam_or_score:
+            case 1:
+                score = all_students[student_index]['exams']['score']
+                print(score)
+                raise Exception('Bye')
+
+            case 2:
+                if all_students[student_index]['exams'][-1] == True:
+                    raise Exception('you take last exam, and you cant to take it again')
+
+        
         file_path = 'data/quize.json'
         try:
             with open(file_path, 'r', encoding='UTF-8') as file:
@@ -109,13 +125,12 @@ class Student(person.Person):
             for item in quiz:
                 for key, value in item.items():
                     print(key)
-                    print(value)
 
                     user_answer = int(input(menu_user_answer))
                     match user_answer:
                         case 1:
-                            student_answers.append(True)
                             if value == True:
+                            student_answers.append(True)
                                 student_score += 1
                         case 2:
                             student_answers.append(False)
@@ -123,11 +138,13 @@ class Student(person.Person):
                                 student_score += 1
 
             print(f'your score is: {student_score}')
+
+
             for i, item in enumerate(quiz):
                 for key, value in item.items():
                     print(f"Q_{i +1}. {key}: {'YES'if value else 'NO'}, and your answer is: {'YES' if student_answers[i] else 'NO'}")
 
-                    
-                    
-
-Student.subment_quiz()
+            
+            all_students[student_index]['exams'].append({'score':student_score, 'state':True})
+            with open('data/students.json', 'w', encoding='UTF-8') as file:
+                json.dump(all_students, file, indent=2)
