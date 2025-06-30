@@ -19,8 +19,13 @@ Are you a:
 teacher_menu = """
 1. Disply Students
 2. Devid class to groubs
+3. create Quize
 """
 
+student_menu = """
+1. show my scroe
+2. solve quize
+"""
 
 user_login_choise = int(input(login_menu))
 match user_login_choise:
