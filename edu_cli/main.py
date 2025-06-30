@@ -52,11 +52,29 @@ match user_login_choise:
                         case 2:
                             groups_number = int(input('Enter groups number: '))
                             student.Student.devide_students_groubs(groups_number)
-                    
+                        case 3:
+                            try:    
+                                number_qustions = int(input('How many qustions you want to genrate? '))
+                                teacher.Teacher.create_quize(number_qustions)
+                            except Exception as e:
+                                print(e)
+                        case 4:
+                            teacher.Teacher.add_qustion()
+                        case _:
+                            print('invalid number')
+
             case 2:
                 id_number = input('Enter id number: ')
                 password = input('Enter password: ')
                 if student.Student.log_in(id_number, password):
-                    print('GOOOOOOOOOOOD Student')
+                    student_choise = int(input(student_menu))
+                    match student_choise:
+                        case 1:
+                            student.Student.subment_quiz()
+                        case 2:
+                            student.Student.subment_quiz()
+                        case _:
+                            print('invalid input')
+
     case _:
         print('invalid input')        

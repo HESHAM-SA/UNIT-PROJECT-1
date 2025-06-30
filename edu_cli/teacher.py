@@ -2,6 +2,7 @@ import person
 import json
 import os 
 import random
+import student
 
 class Teacher(person.Person):
     def __init__(self, name, id_number, city, password, major):
@@ -72,14 +73,34 @@ class Teacher(person.Person):
                 json.dump(qustions)
                 print(e + 'but now we create empty list []')
 
+        qize_qustions = []
+        # to shuffle qustions then extract qustion only ( without answer )
         random.shuffle(qustions)
         for i in range(number_qustions):
-            print(qustions[i].keys(), end='')
-            q = qustions[i].values()
-            print(list(q)[0].keys())
+            q = qustions[i]
+            values = list(q.values())
+            qustoin = list(values[0].keys())
+            answer = list(values[0].values())
+            qustion_number = {qustoin[0]:answer[0]}
+            qize_qustions.append(qustion_number)
+            answer = '✔️' if answer[0] else '❌'
+            print(f"Q{1}. {qustoin[0]}, {answer}")
 
-
-
+        user_input = input('Do you want to subment this quations to stuednts? (y/n): ')
+        match user_input:
+            case 'y':
+                try:
+                    quize_path = 'data/quize.json'
+                    os.makedirs(os.path.dirname(quize_path), exist_ok=True)
+                    with open(quize_path, 'w', encoding='UTF-8') as file:
+                        json.dump(qize_qustions, file, indent=2)
+                except FileNotFoundError as e:
+                    print(e)
+            case 'n':
+                print('Bye')
+            case _:
+                print('invalid input')
+        
     def add_qustion():
         qustions = []
         file_path = 'data/qustions.json'
@@ -117,10 +138,6 @@ class Teacher(person.Person):
                 json.dump(qustions, file, indent=2)
         except Exception as e:
             print(e)
-
-
-# Teacher.add_qustion()
-Teacher.create_quize(2)
 
 
 

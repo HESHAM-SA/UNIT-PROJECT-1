@@ -1,4 +1,5 @@
 import person 
+import teacher
 import json
 import os
 import pandas as pd
@@ -7,18 +8,13 @@ import numpy as np
 
 
 class Student(person.Person):
-    def __init__(self, name, id_number, city, password, level):
+    def __init__(self, name, id_number, city, password, score):
         super().__init__(name, id_number, city, password)
-        self.set_level(level)
+        self.set_score(score)
 
-    def set_level(self, level):
-        levels = ['1', '2', '3']
-        if level not in levels:
-            raise Exception (f'please enter one of those levels: {levels}')
-
-        else:
-            self.level = level
-            return self.level
+    def set_score(self, score):
+        self.__score = score
+        return self.__score
         
     @staticmethod
     def register_new_user(): 
@@ -66,7 +62,6 @@ class Student(person.Person):
 
 
     def display_students():
-
         try:
             with open('data/students.json', 'r', encoding='UTF-8') as file:
                 students = json.load(file)
@@ -94,4 +89,45 @@ class Student(person.Person):
             for i, group in enumerate(groups):
                 print(f"Group {i}: {group}")
 
-Student.devide_students_groubs(2)
+
+    def subment_quiz():
+        file_path = 'data/quize.json'
+        try:
+            with open(file_path, 'r', encoding='UTF-8') as file:
+                quiz = json.load(file)
+        except FileNotFoundError as e:
+            print(e)
+        menu_user_answer = """
+        Chose answer 1 or 2 ?: 
+        1. ✔️
+        2. ❌
+        """
+        student_answers = []
+        student_score = 0
+        user_ready = input(f'Ready to take qize? each qustion will wait 10 second and you have {len(quiz)} qustions (y/n): ')
+        if user_ready == 'y':
+            for item in quiz:
+                for key, value in item.items():
+                    print(key)
+                    print(value)
+
+                    user_answer = int(input(menu_user_answer))
+                    match user_answer:
+                        case 1:
+                            student_answers.append(True)
+                            if value == True:
+                                student_score += 1
+                        case 2:
+                            student_answers.append(False)
+                            if value == False:
+                                student_score += 1
+
+            print(f'your score is: {student_score}')
+            for i, item in enumerate(quiz):
+                for key, value in item.items():
+                    print(f"Q_{i +1}. {key}: {'YES'if value else 'NO'}, and your answer is: {'YES' if student_answers[i] else 'NO'}")
+
+                    
+                    
+
+Student.subment_quiz()
