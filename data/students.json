@@ -9,5 +9,23 @@
                 "score": 0
             }
         ]
+    },
+    {
+        "name": "mohamed",
+        "city": "riyadh",
+        "id_number": "090",
+        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
+        "exams": []
+    },
+    {
+        "name": "ali",
+        "city": "r",
+        "id_number": "444",
+        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
+        "exams": [
+            {
+                "score": 0
+            }
+        ]
     }
 ]

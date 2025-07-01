@@ -3,12 +3,13 @@ import person
 import random
 from utils import load_json_file, save_json_file, get_valid_string, get_valid_int, verify_password
 
+
 class Teacher(person.Person):
-    def __init__(self, name, id_number, city, password, major):
+    def __init__(self, name: str, id_number: str, city: str, password: str, major: str) -> None:
         super().__init__(name, id_number, city, password)
         self.set_major(major)
 
-    def set_major(self, major):
+    def set_major(self, major: str) -> str:
         """Validates and sets the teacher's major."""
         # This is a good example of encapsulation, ensuring data integrity.
         valid_majors = ['math', 'history', 'computer']
@@ -18,7 +19,7 @@ class Teacher(person.Person):
         return self.major
 
     @staticmethod
-    def register():
+    def register() -> None:
         """Handles the registration process for a new teacher."""
         file_path = 'data/teachers.json'
         all_teachers = load_json_file(file_path)
@@ -37,15 +38,15 @@ class Teacher(person.Person):
             print(f"Registration failed: {e}")
 
     @staticmethod
-    def log_in(id_number, password):
+    def log_in(id_number: str, password: str) -> bool:
         """Logs in a teacher by verifying their ID and password."""
         file_path = 'data/teachers.json'
         teachers = load_json_file(file_path)
-        
+
         if not teachers:
             print("No teacher data found. Please register first.")
             return False
-            
+
         for teacher in teachers:
             if id_number == teacher.get('id_number') and verify_password(teacher.get('password'), password):
                 print(f"Welcome, teacher: {teacher['name']}!")
@@ -54,11 +55,11 @@ class Teacher(person.Person):
         return False
 
     @staticmethod
-    def create_quiz(number_of_questions: int):
+    def create_quiz(number_of_questions: int) -> None:
         """Creates a new quiz from the question bank."""
         bank_path = 'data/questions.json'
         question_bank = load_json_file(bank_path)
-        
+
         if not question_bank:
             print("Question bank is empty or not found. Please add questions first.")
             return
@@ -70,7 +71,7 @@ class Teacher(person.Person):
         print("How would you like to select questions?")
         print("1. Randomly select questions")
         print("2. Use the last questions added")
-        
+
         selection_choice = get_valid_int("Enter your choice: ")
         quiz_questions = []
 
@@ -101,7 +102,7 @@ class Teacher(person.Person):
                 print("Please enter 'y' for yes or 'n' for no.")
 
     @staticmethod
-    def add_question_to_bank():
+    def add_question_to_bank() -> None:
         """Adds new True/False questions to the question bank."""
         file_path = 'data/questions.json'
         question_bank = load_json_file(file_path)
@@ -117,13 +118,13 @@ class Teacher(person.Person):
                     return
                 else:
                     print("Please enter 'y' for yes or 'n' for no.")
-            
+
             question_text = get_valid_string('Enter the new True/False question statement: ')
             print("Is the correct answer True or False?")
             print("1. True")
             print("2. False")
             answer_choice = get_valid_int("Enter your choice: ")
-            
+
             correct_answer = (answer_choice == 1)
             new_question = {question_text: correct_answer}
             question_bank.append(new_question)
