@@ -1,19 +1,18 @@
 # person.py
-import json
+from utils import load_json_file, hash_password
 
 class Person:
     def __init__(self, name: str, id_number: str, city: str, password: str):
         self.name = name
         self.city = city
-        # Setters are called to validate data upon object creation
         self.set_id_number(id_number)
         self.set_password(password)
 
     def set_password(self, password):
-        """Validates and sets the user's password."""
+        """Validates and sets the user's password (hashed)."""
         if len(password) < 3:
             raise ValueError('Password must be at least 3 characters long.')
-        self.password = password
+        self.password = hash_password(password)
         print(f'Password for {self.name} set successfully.')
         return self.password
 
@@ -23,35 +22,19 @@ class Person:
             raise ValueError('ID number must be exactly 3 digits.')
 
         teachers_file_path = 'data/teachers.json'
-        students_file_path = 'data/students.json' # <-- BUG FIX: Was pointing to teachers.json
+        students_file_path = 'data/students.json'
 
         # Check for ID uniqueness in teachers file
-        try:
-            with open(teachers_file_path, 'r', encoding='UTF-8') as file:
-                teachers = json.load(file)
-            for teacher in teachers:
-                if id_number == teacher['id_number']:
-                    raise ValueError('This ID number is already taken. Please choose another one.')
-        except FileNotFoundError:
-            # This is normal if it's the first teacher registering
-            pass
-        except json.JSONDecodeError:
-            # This is normal if the file is empty
-            pass
+        teachers = load_json_file(teachers_file_path)
+        for teacher in teachers:
+            if id_number == teacher['id_number']:
+                raise ValueError('This ID number is already taken. Please choose another one.')
 
         # Check for ID uniqueness in students file
-        try:
-            with open(students_file_path, 'r', encoding='UTF-8') as file:
-                students = json.load(file)
-            for student in students:
-                if id_number == student['id_number']:
-                    raise ValueError('This ID number is already taken. Please choose another one.')
-        except FileNotFoundError:
-            # This is normal if it's the first student registering
-            pass
-        except json.JSONDecodeError:
-             # This is normal if the file is empty
-            pass
+        students = load_json_file(students_file_path)
+        for student in students:
+            if id_number == student['id_number']:
+                raise ValueError('This ID number is already taken. Please choose another one.')
 
         self.id_number = id_number
         print(f'ID number {self.id_number} set successfully.')

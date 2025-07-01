@@ -1,0 +1,2 @@
+l = ['ali', 'mohamed', 'saad']
+

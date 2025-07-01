@@ -2,6 +2,7 @@
 import person
 import student
 import teacher
+from utils import get_valid_int, get_valid_string
 
 # --- Menus ---
 login_menu = """
@@ -22,64 +23,61 @@ teacher_menu = """
 2. Divide Students into Groups
 3. Create Quiz
 4. Add New Question to Bank
+5. Exit
 """
 
 student_menu = """
 1. Show My Score
 2. Take Quiz
+3. Exit
 """
 
-login_choice = int(input(login_menu))
-match login_choice:
-    case 1:  # Register
-        role_choice = int(input(role_selection_menu))
-        match role_choice:
-            case 1:
-                teacher.Teacher.register()
-            case 2:
-                student.Student.register()
-            case _:
-                print('Invalid number entered.')
-    case 2:  # Log In
-        role_choice = int(input(role_selection_menu))
-        match role_choice:
-            case 1: # Teacher Login
-                id_number = input('Enter ID number: ')
-                password = input('Enter password: ')
-                if teacher.Teacher.log_in(id_number, password):
-                    teacher_menu_choice = int(input(teacher_menu))
-                    match teacher_menu_choice:
-                        case 1:
-                            student.Student.display_all_students()
-                        case 2:
-                            group_size = int(input('Enter the desired size for each group: '))
-                            student.Student.divide_students_into_groups(group_size)
-                        case 3:
-                            try:
-                                number_of_questions = int(input('How many questions do you want to generate for the quiz? '))
-                                teacher.Teacher.create_quiz(number_of_questions)
-                            except ValueError:
-                                print("Invalid input. Please enter a number.")
-                            except Exception as e:
-                                print(f"An error occurred: {e}")
-                        case 4:
-                            teacher.Teacher.add_question_to_bank()
-                        case _:
-                            print('Invalid number entered.')
+while True:
+    login_choice = get_valid_int(login_menu)
+    match login_choice:
+        case 1:  # Register
+            role_choice = get_valid_int(role_selection_menu)
+            match role_choice:
+                case 1:
+                    teacher.Teacher.register()
+                case 2:
+                    student.Student.register()
+        case 2:  # Log In
+            role_choice = get_valid_int(role_selection_menu)
+            match role_choice:
+                case 1: # Teacher Login
+                    id_number = get_valid_string('Enter ID number: ')
+                    password = get_valid_string('Enter password: ')
+                    if teacher.Teacher.log_in(id_number, password):
+                        while True:
+                            teacher_menu_choice = get_valid_int(teacher_menu)
+                            match teacher_menu_choice:
+                                case 1:
+                                    student.Student.display_all_students()
+                                case 2:
+                                    group_size = get_valid_int('Enter the desired size for each group: ')
+                                    student.Student.divide_students_into_groups(group_size)
+                                case 3:
+                                    number_of_questions = get_valid_int('How many questions do you want to generate for the quiz? ')
+                                    teacher.Teacher.create_quiz(number_of_questions)
+                                case 4:
+                                    teacher.Teacher.add_question_to_bank()
+                                case 5:
+                                    break
 
-            case 2: # Student Login
-                id_number = input('Enter ID number: ')
-                password = input('Enter password: ')
-                if student.Student.log_in(id_number, password):
-                    student_menu_choice = int(input(student_menu))
-                    match student_menu_choice:
-                        case 1:
-                            student.Student.show_score(id_number)
-                        case 2:
-                            student.Student.take_quiz(id_number)
-                        case _:
-                            print('Invalid input.')
-    case 3:
-        print("Exiting program. Goodbye!")
-    case _:
-        print('Invalid input.')
+                case 2: # Student Login
+                    id_number = get_valid_string('Enter ID number: ')
+                    password = get_valid_string('Enter password: ')
+                    if student.Student.log_in(id_number, password):
+                        while True:
+                            student_menu_choice = get_valid_int(student_menu)
+                            match student_menu_choice:
+                                case 1:
+                                    student.Student.show_score(id_number)
+                                case 2:
+                                    student.Student.take_quiz(id_number)
+                                case 3:
+                                    break
+        case 3:
+            print("Exiting program. Goodbye!")
+            break
