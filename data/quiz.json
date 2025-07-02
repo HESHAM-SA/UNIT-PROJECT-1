@@ -1,5 +1,11 @@
 [
     {
-        "is your name is Hesham ?": true
+        "You can see pictures and videos on a computer.": true
+    },
+    {
+        "Computers can think like humans.": false
+    },
+    {
+        "You should eat food near the keyboard.": false
     }
 ]

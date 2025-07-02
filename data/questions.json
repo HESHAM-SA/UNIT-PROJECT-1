@@ -1,8 +1,32 @@
 [
     {
-        "is your name is Hesham ?": true
+        "A computer can be used to play games.": true
     },
     {
-        "is your name ali?": false
+        "Computers only work when the internet is connected.": false
+    },
+    {
+        "The mouse is used to draw on the screen.": true
+    },
+    {
+        "The keyboard is used to cook food.": false
+    },
+    {
+        "A tablet is a type of computer.": true
+    },
+    {
+        "Computers can think like humans.": false
+    },
+    {
+        "Laptops are small computers you can carry.": true
+    },
+    {
+        "You can see pictures and videos on a computer.": true
+    },
+    {
+        "You should eat food near the keyboard.": false
+    },
+    {
+        "Robots can be controlled by computers.": true
     }
 ]
