@@ -1,3 +1,11 @@
+Of course. It's a great idea to use a `requirements.txt` file to streamline the setup process for your project. I will update the `README.md` file to incorporate instructions for using it.
+
+Here is the revised `README.md` content. I've updated the "Getting Started" section to reflect the use of a `requirements.txt` file, making the installation process more efficient and standard.
+
+**Download updated README.md**
+
+---
+
 # School CLI Management System
 
 A robust and interactive Command-Line Interface (CLI) application for managing students and teachers, creating quizzes, and tracking student performance. Built with Python and enhanced with the `rich` library for a beautiful and intuitive terminal output.
@@ -33,28 +41,32 @@ This application provides a comprehensive set of features for both teachers and 
 
 ## 🚀 Getting Started
 
+Follow these steps to get the application up and running on your local machine.
+
 ### Prerequisites
 
 - Python 3.x
-- Make sure you have the required Python libraries installed. You can install them using pip:
-  ```bash
-  pip install rich pandas
-  ```
 
 ### Installation & Running
 
-1.  **Clone the repository or download the files.**
-2.  **Ensure the Python files are in the same directory:**
+1.  **Clone the repository or download the project files.**
+2.  **Navigate to the project directory** in your terminal.
+3.  **Install the required dependencies** using the `requirements.txt` file. This file should contain the necessary libraries like `rich` and `pandas`.
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  **Ensure the project structure is correct:**
     - `main.py`
     - `person.py`
     - `student.py`
     - `teacher.py`
     - `utils.py`
-3.  **Run the application from your terminal:**
+    - `requirements.txt`
+5.  **Run the application from your terminal:**
     ```bash
     python main.py
     ```
-4.  The application will start, and a `data/` directory will be automatically created to store JSON files as you register users and create content.
+6.  The application will start, and a `data/` directory will be automatically created to store JSON files as you register users and create content.
 
 ---
 
@@ -67,6 +79,7 @@ The project is organized into several modules for clarity and maintainability:
 -   `teacher.py`: Contains the `Teacher` class, which inherits from `Person`. It includes all functionalities specific to teachers, like creating quizzes and managing students.
 -   `student.py`: Contains the `Student` class, which also inherits from `Person`. It handles student-specific actions, such as taking quizzes and viewing scores.
 -   `utils.py`: A collection of utility functions used across the project, including input validation, password hashing, and loading/saving JSON data.
+-   `requirements.txt`: Lists all the Python libraries required to run the project.
 -   `data/` (directory): This folder is created automatically to store the application's data:
     -   `teachers.json`: Stores registered teacher data.
     -   `students.json`: Stores registered student data.
