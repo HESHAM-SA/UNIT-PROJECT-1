@@ -135,8 +135,7 @@ class Student(person.Person):
         else:
             last_exam = student['exams'][-1]
             score = last_exam.get('score', 'N/A')
-            total = last_exam.get('total_questions', 'N/A')
-            console.print(f"[bold #00BFFF]Your score on the last quiz was: {score}/{total}[/]")
+            console.print(f"[bold #00BFFF]Your score on the last quiz was: {score}[/]")
 
 
     @staticmethod

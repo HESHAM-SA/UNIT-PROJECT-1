@@ -33,10 +33,10 @@ def get_valid_int(prompt: str) -> int:
             console.print("[bold #FF4500]Please enter a valid number.[/]")
 
 
-def get_valid_string(prompt: str, min_length: int = 1) -> str:
+def get_valid_string(prompt: str, min_length: int = 1, is_password: bool = False) -> str:
     """Get valid string input with length validation."""
     while True:
-        value = console.input(prompt).strip()
+        value = console.input(prompt, password=is_password).strip()
         if len(value) >= min_length:
             return value
         console.print(f"[bold #FF4500]Input must be at least {min_length} character(s) long.[/]")

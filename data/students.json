@@ -7,72 +7,58 @@
         "exams": []
     },
     {
-        "name": "mohamed",
-        "city": "Riyadh",
-        "id_number": "090",
-        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
-        "exams": []
-    },
-    {
-        "name": "ali",
-        "city": "Riyadh",
-        "id_number": "222",
-        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
-        "exams": []
-    },
-    {
-        "name": "ahmad",
-        "city": "Riyadh",
-        "id_number": "333",
-        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
-        "exams": []
-    },
-    {
-        "name": "yusuf",
-        "city": "Riyadh",
-        "id_number": "444",
-        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
-        "exams": []
-    },
-    {
-        "name": "omar",
-        "city": "Riyadh",
-        "id_number": "555",
-        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
-        "exams": []
-    },
-    {
-        "name": "khalid",
-        "city": "Riyadh",
-        "id_number": "666",
-        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
-        "exams": []
-    },
-    {
-        "name": "hassan",
-        "city": "Riyadh",
-        "id_number": "777",
-        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
-        "exams": []
-    },
-    {
-        "name": "ibrahim",
-        "city": "Riyadh",
-        "id_number": "888",
-        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
-        "exams": []
-    },
-    {
-        "name": "zayd",
+        "name": "Mohamed",
         "city": "Riyadh",
         "id_number": "999",
         "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
         "exams": []
     },
     {
-        "name": "tariq",
+        "name": "Ali",
         "city": "Riyadh",
-        "id_number": "010",
+        "id_number": "222",
+        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
+        "exams": []
+    },
+    {
+        "name": "Ahmad",
+        "city": "Riyadh",
+        "id_number": "333",
+        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
+        "exams": []
+    },
+    {
+        "name": "Yusuf",
+        "city": "Riyadh",
+        "id_number": "444",
+        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
+        "exams": []
+    },
+    {
+        "name": "Omar",
+        "city": "Riyadh",
+        "id_number": "555",
+        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
+        "exams": []
+    },
+    {
+        "name": "Khalid",
+        "city": "Riyadh",
+        "id_number": "666",
+        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
+        "exams": []
+    },
+    {
+        "name": "Hassan",
+        "city": "Riyadh",
+        "id_number": "777",
+        "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
+        "exams": []
+    },
+    {
+        "name": "Ibrahim",
+        "city": "Riyadh",
+        "id_number": "888",
         "password": "24d166cd6c8b826c779040b49d5b6708d649b236558e8744339dfee6afe11999",
         "exams": []
     }

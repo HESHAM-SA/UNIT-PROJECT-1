@@ -102,13 +102,13 @@ def handle_login():
     match role_choice:
         case 1:  # Teacher Login
             id_number = get_valid_string('[bold #FFD700]Enter ID number: [/]')
-            password = get_valid_string('[bold #FFD700]Enter password: [/]')
+            password = get_valid_string('[bold #FFD700]Enter password: [/]',3,True)
             if teacher.Teacher.log_in(id_number, password):
                 handle_teacher_session()
 
         case 2:  # Student Login
             id_number = get_valid_string('[bold #FFD700]Enter ID number: [/]')
-            password = get_valid_string('[bold #FFD700]Enter password: [/]')
+            password = get_valid_string('[bold #FFD700]Enter password: [/]', 1, True)
             if student.Student.log_in(id_number, password):
                 handle_student_session(id_number)
         case _:
@@ -118,7 +118,6 @@ def handle_login():
 def main():
     """The main function to run the application's command-line interface."""
     while True:
-        console.clear()
         console.print(Panel(login_menu, title="[bold #00BFFF]Welcome to the School CLI[/]", border_style="#00BFFF"))
         login_choice = get_valid_int("[bold #FFD700]>>[/] ")
         match login_choice:
